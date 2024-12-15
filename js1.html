@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .code-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin: 0 0 10px;
+            color: #4caf50; /* Green color for question numbers */
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            overflow-x: auto;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .body-container {
+            padding-bottom: 120px;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            z-index: 1000;
+        }
+
+        h1 {
+            margin-top: 100px;
+            background-color: #4caf50; /* Green background */
+            color: white; /* White text */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        /* Cursive font for footer text */
+        .footer h3 {
+            color: white; /* Make the footer text white */
+            font-family: 'Brush Script MT', cursive; /* Cursive font for handwriting style */
+            font-size: 20px; /* Adjust font size */
+            font-weight: normal; /* Optional: To keep the text weight normal */
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            border: none;
+            display: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        // Scroll to Top Button
+        window.onscroll = function () {
+            let scrollBtn = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Copy Code to Clipboard
+        function copyToClipboard(id) {
+            let code = document.getElementById(id).getElementsByTagName('pre')[0].innerText;
+            navigator.clipboard.writeText(code).then(function () {
+                alert("Code copied to clipboard!");
+            }).catch(function (err) {
+                alert("Failed to copy code: " + err);
+            });
+        }
+
+        // Clear Code Function
+        function clearCode(id) {
+            document.getElementById(id).getElementsByTagName('pre')[0].innerText = "";
+        }
+    </script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#code1">Q1</a>
+       <a href="#code2">Q2</a>
+       <a href="#code3">Q3</a>
+       <a href="#code4">Q4</a>
+       <a href="#code5">Q5</a>
+       <a href="#code6">Q6</a>
+       <a href="#code7">Q7</a>
+       <a href="#code8">Q8</a>
+       <a href="#code9">Q9</a>
+       <a href="#code10">Q10</a>
+       <a href="#code11">Q11</a>
+       <a href="#code12">Q12</a>
+       <a href="#code13">Q13</a>
+       <a href="#code14">Q14</a>
+       <a href="#code15">Q15</a>
+       <a href="#code16">Q16</a>
+       <a href="#code18">Q17</a>
+       <a href="#code19">Q18</a>
+       <a href="#code20">Q19</a>
+       <a href="#code21">Q20</a>
+       <a href="#code22">Q21</a>
+       <a href="#code22">Q22</a>
+    </nav>
+
+    <h1>JavaScript Lab Sheet -1</h1>
+
+    <!-- Question 1 -->
+    <div class="code-container" id="code1">
+        <h3>Qn.1: Write a program find to addition, subtraction, multiplication and division of two numbers
+            entered by the user.</h3>
+        <pre>
+let num1 = parseInt(prompt("Enter first number:"));
+let num2 = parseInt(prompt("Enter second number:"));
+document.write(`Sum: ${num1 + num2} <br>`);
+document.write(`Difference: ${num1 - num2} <br>`);
+document.write(`Product: ${num1 * num2} <br>`);
+document.write(`Division: ${num1 / num2} <br>`);
+        </pre>
+        <button onclick="copyToClipboard('code1')">Copy Code</button>
+        <button onclick="clearCode('code1')">Clear Code</button>
+    </div> <!-- Question 2 -->
+    <div class="code-container">
+        <h3>Qn.2: Write a program to calculate the surface area of cube.
+        </h3>
+        <pre id="code2">
+let length = parseInt(prompt("Enter the length of one side of the cube: "));
+let surfaceArea = 6 * length * length;
+document.write(`The surface area of the cube is: ${surfaceArea}`);
+        </pre>
+        <button onclick="copyToClipboard('code2')">Copy Code</button>
+        <button onclick="clearCode('code2')">Clear Code</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="code-container">
+        <h3>Qn.3: Calculate the area and circumference of the circle.</h3>
+        <pre id="code3">
+const pi = 3.14;
+let radius = parseInt(prompt("Enter the radius of the circle: "));
+let area = pi * radius * radius;
+let circumference = 2 * pi * radius;
+document.write(`The area of the circle is: ${area} <br>`);
+document.write(`The circumference of the circle is: ${circumference}`);
+        </pre>
+        <button onclick="copyToClipboard('code3')">Copy Code</button>
+        <button onclick="clearCode('code3')">Clear Code</button>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="code-container">
+        <h3>Qn.4: The length and breadth are input through the keyboard. Write a program to calculate the area
+            and perimeter of the rectangle.</h3>
+        <pre id="code4">
+let length = parseInt(prompt("Enter the length of the rectangle: "));
+let breadth = parseInt(prompt("Enter the breadth of the rectangle: "));
+let area = length * breadth;
+let perimeter = 2 * (length + breadth);
+document.write(`The area of the rectangle is: ${area} <br>`);
+document.write(`The perimeter of the rectangle is: ${perimeter}`);
+        </pre>
+        <button onclick="copyToClipboard('code4')">Copy Code</button>
+        <button onclick="clearCode('code4')">Clear Code</button>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="code-container">
+        <h3>Qn.5: Write a program to divide one integer by another integer and find the quotient and remainder.</h3>
+        <pre id="code5">
+let dividend = parseInt(prompt("Enter the dividend: "));
+let divisor = parseInt(prompt("Enter the divisor: "));
+let quotient = Math.floor(dividend / divisor);
+let remainder = dividend % divisor;
+document.write(`The quotient is: ${quotient} <br>`);
+document.write(`The remainder is: ${remainder}`);
+        </pre>
+        <button onclick="copyToClipboard('code5')">Copy Code</button>
+        <button onclick="clearCode('code5')">Clear Code</button>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="code-container">
+        <h3>Qn.6: Write a program to convert entered number of seconds into hours, minutes and seconds.</h3>
+        <pre id="code6">
+let totalSeconds = parseInt(prompt("Enter total seconds: "));
+let hours = Math.floor(totalSeconds / 3600);
+let minutes = Math.floor((totalSeconds % 3600) / 60);
+let seconds = totalSeconds % 60;
+document.write(`${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+        </pre>
+        <button onclick="copyToClipboard('code6')">Copy Code</button>
+        <button onclick="clearCode('code6')">Clear Code</button>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="code-container">
+        <h3>Qn.7: Write a program to convert entered number of days into years, months and days.</h3>
+        <pre id="code7">
+let totalDays = parseInt(prompt("Enter total days: "));
+let years = Math.floor(totalDays / 365);
+let months = Math.floor((totalDays % 365) / 30);
+let days = totalDays % 30;
+document.write(`${years} years, ${months} months, ${days} days`);
+        </pre>
+        <button onclick="copyToClipboard('code7')">Copy Code</button>
+        <button onclick="clearCode('code7')">Clear Code</button>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="code-container">
+        <h3>Qn.8: Write a program to input two-digit numbers and reverse the number.</h3>
+        <pre id="code8">
+let number = parseInt(prompt("Enter a two-digit number: "));
+let reversed = (number % 10) * 10 + Math.floor(number / 10);
+document.write(`The reversed number is: ${reversed}`);
+        </pre>
+        <button onclick="copyToClipboard('code8')">Copy Code</button>
+        <button onclick="clearCode('code8')">Clear Code</button>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="code-container">
+        <h3>Qn.9: Write a program that will convert temperature in Centigrade into Fahrenheit.</h3>
+        <pre id="code9">
+let celsius = parseFloat(prompt("Enter temperature in Celsius: "));
+let fahrenheit = (9 * celsius) / 5 + 32;
+document.write(`Temperature in Fahrenheit is: ${fahrenheit}`);
+        </pre>
+        <button onclick="copyToClipboard('code9')">Copy Code</button>
+        <button onclick="clearCode('code9')">Clear Code</button>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="code-container">
+        <h3>Qn.10: Write a program that asks three coefficients of a quadratic equation and calculate its root.</h3>
+        <pre id="code10">
+let a = parseFloat(prompt("Enter coefficient a: "));
+let b = parseFloat(prompt("Enter coefficient b: "));
+let c = parseFloat(prompt("Enter coefficient c: "));
+let discriminant = b * b - 4 * a * c;
+if (discriminant > 0) {
+    let root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    let root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+    document.write(`Roots: ${root1}, ${root2}`);
+} else if (discriminant == 0) {
+    let root = -b / (2 * a);
+    document.write(`Root: ${root}`);
+} else {
+    let realPart = -b / (2 * a);
+    let imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
+    document.write(`Roots: ${realPart} + ${imaginaryPart}i, ${realPart} - ${imaginaryPart}i`);
+}
+        </pre>
+        <button onclick="copyToClipboard('code10')">Copy Code</button>
+        <button onclick="clearCode('code10')">Clear Code</button>
+    </div>
+
+
+    <!-- Question 11 -->
+    <div class="code-container">
+        <h3>Qn.11: Write a program to check whether the given number is even or odd.</h3>
+        <pre id="code11">
+let num = parseInt(prompt("Enter a number: "));
+if (num % 2 === 0) {
+    document.write(`${num} is even`);
+} else {
+    document.write(`${num} is odd`);
+}
+            </pre>
+        <button onclick="copyToClipboard('code11')">Copy Code</button>
+        <button onclick="clearCode('code11')">Clear Code</button>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="code-container">
+        <h3>Qn.12: Write a program to find out largest among any three numbers.</h3>
+        <pre id="code12">
+let a = parseInt(prompt("Enter first number:"));
+let b = parseInt(prompt("Enter second number:"));
+let c = parseInt(prompt("Enter third number:"));
+if (a > b && a > c) {
+    document.write(`${a} is the largest`);
+} else if (b > c) {
+    document.write(`${b} is the largest`);
+} else {
+    document.write(`${c} is the largest`);
+}
+            </pre>
+        <button onclick="copyToClipboard('code12')">Copy Code</button>
+        <button onclick="clearCode('code12')">Clear Code</button>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="code-container">
+        <h3>Qn.13: Write a program to find out smallest among any three numbers.</h3>
+        <pre id="code13">
+let a = parseInt(prompt("Enter first number:"));
+let b = parseInt(prompt("Enter second number:"));
+let c = parseInt(prompt("Enter third number:"));
+if (a < b && a < c) {
+    document.write(`${a} is the smallest`);
+} else if (b < c) {
+    document.write(`${b} is the smallest`);
+} else {
+    document.write(`${c} is the smallest`);
+}
+            </pre>
+        <button onclick="copyToClipboard('code13')">Copy Code</button>
+        <button onclick="clearCode('code13')">Clear Code</button>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="code-container">
+        <h3>Qn.14: A sales man gets commission on the basis of his daily sales and the rate of commission is as
+            follows:
+            Total sales made                Commission rate
+            i.   Below 5000                 1%
+            ii.  Between 5000 to 8000       3%
+            iii. Between 8000 to 11000      5%
+            iv.  Above 11000                10%
+            Write a program asking his total sales and calculate his commission amount.</h3>
+        <pre id="code14">
+let sales = parseInt(prompt("Enter total sales amount:"));
+let commission;
+if (sales <= 5000) {
+    commission = sales * 0.01;
+} else if (sales <= 8000) {
+    commission = sales * 0.03;
+} else if (sales <= 11000) {
+    commission = sales * 0.05;
+} else {
+    commission = sales * 0.1;
+}
+    document.write(`Commission amount: Rs. ${commission}`);
+            </pre>
+        <button onclick="copyToClipboard('code14')">Copy Code</button>
+        <button onclick="clearCode('code14')">Clear Code</button>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="code-container">
+        <h3>Qn.15: The discount allowed for various items are 5% for heater, 15% for fan and 10% for toaster. The
+            company charges 10% as sales tax on all items on net value after deducting the discount. Write
+            a program which computes m, n and p and computes the amount to be aid by the store.</h3>
+        <pre id="code15">
+let heaterPrice = parseFloat(prompt("Enter the price of the heater: "));
+let fanPrice = parseFloat(prompt("Enter the price of the fan: "));
+let toasterPrice = parseFloat(prompt("Enter the price of the toaster: "));
+
+let heaterDiscount = heaterPrice * 0.05;
+let fanDiscount = fanPrice * 0.15;
+let toasterDiscount = toasterPrice * 0.1;
+
+let heaterNetPrice = heaterPrice - heaterDiscount;
+let fanNetPrice = fanPrice - fanDiscount;
+let toasterNetPrice = toasterPrice - toasterDiscount;
+
+let totalNetPrice = heaterNetPrice + fanNetPrice + toasterNetPrice;
+
+let salesTax = totalNetPrice * 0.1;
+
+let totalAmount = totalNetPrice + salesTax;
+
+document.write(`The total amount to be paid by the store is: ${totalAmount}`);
+            </pre>
+        <button onclick="copyToClipboard('code15')">Copy Code</button>
+        <button onclick="clearCode('code15')">Clear Code</button>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="code-container">
+        <h3>Qn.16 If cost price and selling price of an item is input thorough the keyboard, write a program to
+            determine.</h3>
+        <pre id="code16">
+let cp = parseInt(prompt("Enter cost price:"));
+let sp = parseInt(prompt("Enter selling price:"));
+if (sp > cp) {
+  let profit = sp - cp;
+  document.write(`Profit: Rs. ${profit}`);
+} else {
+  let loss = cp - sp;
+  document.write(`Loss: Rs. ${loss}`);
+}
+            </pre>
+        <button onclick="copyToClipboard('code16')">Copy Code</button>
+        <button onclick="clearCode('code16')">Clear Code</button>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="code-container">
+        <h3>Qn.17: whether the seller has made profit or incurred loss. Also determine how much profit or loss he
+            made.</h3>
+        <pre id="code17">
+let cp = parseInt(prompt("Enter cost price:"));
+let sp = parseInt(prompt("Enter selling price:"));
+if (sp > cp) {
+  let profit = sp - cp;
+  document.write(`Profit: Rs. ${profit}`);
+} else if (sp < cp) {
+  let loss = cp - sp;
+  document.write(`Loss: Rs. ${loss}`);
+} else {
+  document.write("No profit, no loss");
+}
+            </pre>
+        <button onclick="copyToClipboard('code17')">Copy Code</button>
+        <button onclick="clearCode('code17')">Clear Code</button>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="code-container">
+        <h3>Qn.18: Write a program to input length and breadth of a rectangle and fine whether the area of
+            rectangle is greater than perimeter or not.</h3>
+        <pre id="code18">
+
+let length = parseInt(prompt("Enter length:"));
+let breadth = parseInt(prompt("Enter breadth:"));
+let area = length * breadth;
+let perimeter = 2 * (length + breadth);
+if (area > perimeter) {
+  document.write("Area is greater than perimeter.");
+} else {
+  document.write("Perimeter is greater than area.");
+}
+            </pre>
+        <button onclick="copyToClipboard('code18')">Copy Code</button>
+        <button onclick="clearCode('code18')">Clear Code</button>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="code-container">
+        <h3>Qn.19: Write a program to fine greatest number among two numbers using conditional operator
+            (Ternary operator).</h3>
+        <pre id="code19">
+let a = parseInt(prompt("enter first num: "));
+let b = parseInt(prompt("enter second num: "));
+let greatest = (a > b) ? `${a} is greatest` : `${b} is greatest`;
+document.write(greatest);       
+ </pre>
+        <button onclick="copyToClipboard('code19')">Copy Code</button>
+        <button onclick="clearCode('code19')">Clear Code</button>
+    </div>
+     <!-- Question 20 -->
+     <div class="code-container">
+        <h3>Qn.20: Any year is input through the keyboard. Write a program to determine whether the year is a
+            leap year or not. [Hint: The year is leap if it is fully divisible by 100 and 400 otherwise the year is
+            leap if it is fully divisible by 4.]</h3>
+        <pre id="code20">
+let year = parseInt(prompt("Enter a year:"));
+if ((year % 100 == 0 && year % 400 == 0) || (year % 4 == 0)) {
+  document.write(`${year} is a leap year`);
+} else {
+  document.write(`${year} is not a leap year`);
+}
+        </pre>
+        <button onclick="copyToClipboard('code20')">Copy Code</button> 
+        <button onclick="clearCode('code20')">Clear Code</button>
+    </div>
+
+    <!-- Question 21-->
+    <div class="code-container">
+        <h3>Qn.21: Any character is entered through the keyboard, write a program to determine whether the
+            character
+            Entered is a capital letter, a small letter, a digit or a special symbol.
+            Characters      Ascii values
+            A-Z             65-90
+            a-z             97-122
+            0-9             48-57
+            special symbols 0-47, 58-64, 91-96,123-127</h3>
+        <pre id="code21">
+let ascii = parseInt(prompt("enter ascii value: "));
+document.write(`ascii value ${ascii} <br>`);
+
+if (ascii >= 65 && ascii <= 90) {
+  document.write("The asciiacter is a capital letter.");
+} else if (ascii >= 97 && ascii <= 122) {
+  document.write("The asciiacter is a small letter.");
+} else if (ascii >= 48 && ascii <= 57) {
+  document.write("The asciiacter is a digit.");
+} else if (
+  (ascii >= 0 && ascii <= 47) ||
+  (ascii >= 58 && ascii <= 64) ||
+  (ascii >= 91 && ascii <= 96) ||
+  (ascii >= 123 && ascii <= 127)
+) {
+  document.write("The asciiacter is a special symbol.");
+} else {
+  document.write("The asciiacter is not a valid ASCII asciiacter.");
+}
+    </pre>
+        <button onclick="copyToClipboard('code21')">Copy Code</button>
+        <button onclick="clearCode('code21')">Clear Code</button>
+    </div>
+     <!-- Question 22-->
+     <div class="code-container">
+        <h3>Qn.22: Write a JavaScript program to check whether entered number is prime or not.</h3>
+        <pre id="code22">
+let num = parseInt(prompt("enter a number:"));
+let count = 0;
+if (num == 1) {
+    document.write("not prime: ");
+}
+    for (let i = 1; i <= num; i++) {
+if (num % i == 0) {
+    count++;
+    }
+}
+if (count == 2) {
+    document.write(`${num} is prime`);
+} else {
+    document.write(`${num} is not prime`);
+}
+    </pre>
+        <button onclick="copyToClipboard('code22')">Copy Code</button>
+        <button onclick="clearCode('code22')">Clear Code</button>
+</div>
+
+    <div class="footer">
+        <h3>Code by Dipesh Khatri</h3>
+    </div>
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+</body>
+
+</html>
+
+
